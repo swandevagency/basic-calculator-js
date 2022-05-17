@@ -149,39 +149,39 @@ p {
   transition: 0.3s;
 }
 
-.clearAll p {
-  background-color: rgba(255, 0, 0, 0.682);
+.clearAll {
+  background-color: rgba(255, 0, 0, 0.682) !important;
 }
 
-.delete p {
-  background-color: rgba(255, 255, 0, 0.888);
+.delete {
+  background-color: rgba(255, 255, 0, 0.888) !important;
 }
 
-.equal p {
-  background-color: rgba(0, 255, 4, 0.822);
+#equal {
+  background-color: rgba(0, 255, 4, 0.822) !important;
 }
 
-.Addition p {
-  background-color: #ffbf00;
+.Addition {
+  background-color: #ffbf00 !important;
 }
 
-.Subtraction p {
-  background-color: #ffbf00;
+.Subtraction {
+  background-color: #ffbf00 !important;
 }
 
-.Multiplication p {
-  background-color: #ffbf00;
+.Multiplication {
+  background-color: #ffbf00 !important;
 }
 
-.Division p {
-  background-color: #ffbf00;
+.Division {
+  background-color: #ffbf00 !important;
 }
 
-.Decimal p {
-  background-color: #ffbf00;
+.Decimal {
+  background-color: #ffbf00 !important;
 }
 
-.dontClick p {
+.dontClick p, .Reload-page p {
   -webkit-box-shadow: inset 0px 5px 11px -1px rgba(0, 0, 0, 0.62);
   box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.37);
   font-size: 16px;
@@ -189,7 +189,7 @@ p {
   padding: 10px;
 }
 
-.dontClick p:active {
+.dontClick p:active, .Reload-page p:active {
   -webkit-box-shadow: inset 0px 5px 11px -1px rgba(0, 0, 0, 0.62);
   box-shadow: inset 0px 0px 20px 0px rgba(0, 0, 0, 0.37);
 }
