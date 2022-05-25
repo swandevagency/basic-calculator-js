@@ -1,89 +1,236 @@
-//Clear Button functionallity
+//Difining buttons
+const numberBut = document.querySelectorAll('[data-number]')
+const DecimalNums = document.querySelector(".Decimal")
+const dataOperation = document.querySelectorAll('[data-operation]')
+const delBut = document.querySelector(".delete")
+const equalButton = document.querySelector('#equal')
+const previousNumber = document.querySelector('[previous-number]')
+const currentNumber = document.querySelector('[current-number]')
 
-const clearBtn = document.querySelector(".clear");
-clearBtn.addEventListener("click", function(event) {
-    let clearMonitor = document.querySelector('.current-number') 
-    document.querySelector('.current-number').innerHTML = '';
-    
+
+
+//Number Functionallity for apper when click on it
+numberBut.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const x = event.target.innerText;
+        if (currentNumber.innerText == '') {
+            
+        }
+        return currentNumber.innerText += x;
+    })
+})
+
+
+
+//Operation Button function
+dataOperation.forEach(butOper => {
+    butOper.addEventListener('click', (event) => {
+    const y = event.target.innerText;
+    if (currentNumber.innerText == '') {
+        
+    }
+    return currentNumber.innerText += y;
+    })
+})
+
+
+
+//Operation function
+function updateDisplay(butOper){
+    if (dataOperation.clicked !== true) {
+        console.log('Arsam');
+        previousNumber = currentNumber
+        currentNumber = ''
+        operation = computed
+    } else {
+        
+    }
+
+}
+
+
+
+// if statment for whenever the oparator button clicked
+function computation(){
+    updateDisplay()
+    let previous = parseInt(previousNumber)
+    let current = parseInt(currentNumber)
+    let computed;
+    console.log('cur', current)
+    console.log('pre', previous)
+
+    switch(operation) {
+        case '+':
+            computed = current + previous;
+            break;
+        case '-':
+            computed = current - previous;
+            break;
+        case '*':
+            computed = current * previous;
+            break;
+        case '/':
+            computed = current / previous;
+          break;
+        default:
+      }
+};
+
+//Equal Button Functionallity
+equalButton.addEventListener('click', function calculated(){
+    computation()
+    document.querySelector('.current-number').innerText ;
 });
 
 
-// Numbers Functionallity
 
-const num1 = document.querySelector(".key-number-1")
-num1.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 1;
-})
+//Clear Button functionallity
+const clearBtn = document.querySelector(".clear");
+clearBtn.addEventListener("click", function(event) {
+    let clearMonitor = document.querySelector('.current-number') 
+    document.querySelector('.current-number').innerHTML = '';  
+});
 
-const num2 = document.querySelector(".key-number-2")
-num2.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 2;
-})
 
-const num3 = document.querySelector(".key-number-3")
-num3.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 3;
-})
 
-const num4 = document.querySelector(".key-number-4")
-num4.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 4;
-})
+//Decimal Button functionallity
+DecimalNums.addEventListener('click', function(decnum){
+    document.querySelector('.current-').innerText += '.';
 
-const num5 = document.querySelector(".key-number-5")
-num5.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 5;
-})
+    let show = document.querySelector('.current-number')
+    if(show != ''){
+        document.querySelector('.Decimal').disabled = true;
+    } else {
+        document.querySelector('.Decimal').disabled = false;
+    } 
 
-const num6 = document.querySelector(".key-number-6")
-num6.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 6;
-})
-
-const num7 = document.querySelector(".key-number-7")
-num7.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 7;
-})
-
-const num8 = document.querySelector(".key-number-8")
-num8.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 8;
-})
-
-const num9 = document.querySelector(".key-number-9")
-num9.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 9;
-})
-
-const num0 = document.querySelector(".key-number-0")
-num0.addEventListener('click', function(){
-    document.querySelector('.current-number').innerText += 0;
 })
 
 
 
-//Oparator Button Functionallity
+//Del Button Functionallity
+delBut.addEventListener('click', function del() {
+    let show = document.querySelector('.current-number')
+    let content = show.innerText;
+    if (content.length === 1) {
+        show.innerText = "";
+    } else { 
+        show.innerText = content.substring(0, content.length - 1)
+    }
+});
 
 
-const AdditionNums = document.querySelector(".Addition")
-AdditionNums.addEventListener('click', function(){
-    console.log('+');
-})
 
-const SubtractionNums = document.querySelector(".Subtraction")
-SubtractionNums.addEventListener('click', function(){
-    console.log('-');
-})
 
-const MultiplicationNums = document.querySelector(".Multiplication")
-MultiplicationNums.addEventListener('click', function(){
-    console.log('*');
-})
+//Dont click buttons Functionallity
+const error = document.querySelector(".dontClick")
+error.addEventListener('click', function(){
+    document.querySelector('.calculator').style.display = "none";
+    document.querySelector('.container-secion-wrapper').innerHTML = "<h1> I Said Don't Click </h1>"
+})   
 
-const DivisionNums = document.querySelector(".Division")
-DivisionNums.addEventListener('click', function(){
-    console.log('/');
-})
+function refreshPage(){
+    window.location.reload();
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Numbers Functionallity
+// const num1 = document.querySelector(".key-number-1")
+// num1.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 1;
+// })
+
+// const num2 = document.querySelector(".key-number-2")
+// num2.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 2;
+// })
+
+// const num3 = document.querySelector(".key-number-3")
+// num3.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 3;
+// })
+
+// const num4 = document.querySelector(".key-number-4")
+// num4.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 4;
+// })
+
+// const num5 = document.querySelector(".key-number-5")
+// num5.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 5;
+// })
+
+// const num6 = document.querySelector(".key-number-6")
+// num6.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 6;
+// })
+
+// const num7 = document.querySelector(".key-number-7")
+// num7.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 7;
+// })
+
+// const num8 = document.querySelector(".key-number-8")
+// num8.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 8;
+// })
+
+// const num9 = document.querySelector(".key-number-9")
+// num9.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 9;
+// })
+
+// const num0 = document.querySelector(".key-number-0")
+// num0.addEventListener('click', function(){
+//     document.querySelector('.current-number').innerText += 0;
+// })
+
+
+
+
+
+
+// //Oparator Button Functionallity
+
+// const AdditionNums = document.querySelector(".Addition")
+// AdditionNums.addEventListener('click', function(){
+//     console.log('+');
+// })
+
+// const SubtractionNums = document.querySelector(".Subtraction")
+// SubtractionNums.addEventListener('click', function(){
+//     console.log('-');
+// })
+
+// const MultiplicationNums = document.querySelector(".Multiplication")
+// MultiplicationNums.addEventListener('click', function(){
+//     console.log('*');
+// })
+
+// const DivisionNums = document.querySelector(".Division")
+// DivisionNums.addEventListener('click', function(){
+//     console.log('/');
+// })
 
 
 
@@ -92,18 +239,7 @@ DivisionNums.addEventListener('click', function(){
 
 //Decimal Button Functionallity
 
-const DecimalNums = document.querySelector(".Decimal")
-DecimalNums.addEventListener('click', function(decnum){
-    document.querySelector('.calculater-monitor').innerText += '.';
 
-    let show = document.querySelector('.calculater-monitor')
-    if(show != ''){
-        document.querySelector('.Decimal').disabled = true;
-    } else {
-        document.querySelector('.Decimal').disabled = false;
-    } 
-
-})
 
 
 
@@ -157,12 +293,7 @@ DecimalNums.addEventListener('click', function(decnum){
     //     }
     // })    
     
-    
-    
-    
-    
-    
-    
+        
     
     
     // let show = document.querySelector('.calculater-monitor').innerText
@@ -208,51 +339,57 @@ DecimalNums.addEventListener('click', function(decnum){
     // let eachOperKey = operKeys.forEach(function () {
     
     // }); 
+
+
+
     
+// let previous = document.querySelector('.previous-number').innerText
+// let current = document.querySelector('.current-number').innerText 
+
+
+// if (document.querySelector('.Addition').clicked !== true){
+//     console.log('Addition')
+//     previous = current
+//     current = ''
+//     console.log('pre',previous)
+//     console.log('cur',current)
+//     result = current + previous;
     
+// } else if (document.querySelector('.Subtraction').clicked){
+//     console.log('Subtraction')
+//     result = current - previous;
+// } else if (document.querySelector('.Multiplication').clicked){
+//     console.log('Multiplication')
+//     result = current * previous;
+// } else if (document.querySelector('.Division').clicked){
+//     console.log('Division')
+//     result = current / previous;
+// }
 
 
 
-
-
-
-const calcBtn = document.querySelector('#equal')
-calcBtn.addEventListener('click', function calculated(){
-
-    let previous = document.querySelector('.previous-number').innerText
-    let current = document.querySelector('.current-number').innerText
-    let result;
     
-    
-    if (document.querySelector('.Addition').clicked !== true){
-        console.log('Addition')
-        previous = current
-        current = ''
-        console.log(previous)
-        console.log(current)
-        result = current + previous;
-        
+    /**
+     * tips
+     * 
+     * let operator 
+     * let current
+     * let pervious
+     * let result
+     * function calculate(current, previous, operator) {
+     *  result = current operator previous
+     * 
+     * console.log(result) 
+     * }
+     * 
+     * calculate()
+     * 
+     */
 
-   
-    
-    } else {
-        previous = document.querySelector('.previous-number').innerText
-        current = document.querySelector('.current-number').innerText
-    }
-    
-    if (document.querySelector('.Subtraction').clicked){
-        console.log('Subtraction')
-        result = current - previous;
-    } else if (document.querySelector('.Multiplication').clicked){
-        console.log('Multiplication')
-        result = current * previous;
-    } else if (document.querySelector('.Division').clicked){
-        console.log('Division')
-        result = current / previous;
-    }
-    
-    document.querySelector('.current-number').innerText = result;
-});
+
+
+
+
 
 
 
@@ -323,34 +460,5 @@ calcBtn.addEventListener('click', function calculated(){
 
 
 
-
-
-//Del Button Functionallity
-
-const delBut = document.querySelector(".delete");
-delBut.addEventListener('click', function del() {
-    let show = document.querySelector('.calculater-monitor')
-    let content = show.innerText;
-    if (content.length === 1) {
-        show.innerText = "";
-    } else { 
-        show.innerText = content.substring(0, content.length - 1)
-    }
-});
-
-
-
-
-//Dont click buttons Functionallity
-
-const error = document.querySelector(".dontClick")
-error.addEventListener('click', function(){
-    document.querySelector('.calculator').style.display = "none";
-    document.querySelector('.container-secion-wrapper').innerHTML = "<h1> I Said Don't Click </h1>"
-})   
-
-function refreshPage(){
-    window.location.reload();
-} 
 
 
