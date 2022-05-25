@@ -2,62 +2,62 @@
 
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", function(event) {
-    let clearMonitor = document.querySelector('.calculater-monitor') 
-    document.querySelector('.calculater-monitor').innerHTML = '';
+    let clearMonitor = document.querySelector('.current-number') 
+    document.querySelector('.current-number').innerHTML = '';
     
 });
 
 
-//Numbers Functionallity
+// Numbers Functionallity
 
 const num1 = document.querySelector(".key-number-1")
 num1.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 1;
+    document.querySelector('.current-number').innerText += 1;
 })
 
 const num2 = document.querySelector(".key-number-2")
 num2.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 2;
+    document.querySelector('.current-number').innerText += 2;
 })
 
 const num3 = document.querySelector(".key-number-3")
 num3.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 3;
+    document.querySelector('.current-number').innerText += 3;
 })
 
 const num4 = document.querySelector(".key-number-4")
 num4.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 4;
+    document.querySelector('.current-number').innerText += 4;
 })
 
 const num5 = document.querySelector(".key-number-5")
 num5.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 5;
+    document.querySelector('.current-number').innerText += 5;
 })
 
 const num6 = document.querySelector(".key-number-6")
 num6.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 6;
+    document.querySelector('.current-number').innerText += 6;
 })
 
 const num7 = document.querySelector(".key-number-7")
 num7.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 7;
+    document.querySelector('.current-number').innerText += 7;
 })
 
 const num8 = document.querySelector(".key-number-8")
 num8.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 8;
+    document.querySelector('.current-number').innerText += 8;
 })
 
 const num9 = document.querySelector(".key-number-9")
 num9.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 9;
+    document.querySelector('.current-number').innerText += 9;
 })
 
 const num0 = document.querySelector(".key-number-0")
 num0.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += 0;
+    document.querySelector('.current-number').innerText += 0;
 })
 
 
@@ -67,22 +67,22 @@ num0.addEventListener('click', function(){
 
 const AdditionNums = document.querySelector(".Addition")
 AdditionNums.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += '+';
+    console.log('+');
 })
 
 const SubtractionNums = document.querySelector(".Subtraction")
 SubtractionNums.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += '-';
+    console.log('-');
 })
 
 const MultiplicationNums = document.querySelector(".Multiplication")
 MultiplicationNums.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += '*';
+    console.log('*');
 })
 
 const DivisionNums = document.querySelector(".Division")
 DivisionNums.addEventListener('click', function(){
-    document.querySelector('.calculater-monitor').innerText += '/';
+    console.log('/');
 })
 
 
@@ -120,11 +120,32 @@ DecimalNums.addEventListener('click', function(decnum){
 
 
 
+
+
+// const operKeys = document.querySelectorAll('[data-opr]')
+// let eachOperKey = operKeys.forEach(function () {
+    
+// });
+
+
+
+
+// const numKeys = document.querySelectorAll('.key-numbers')
+// numKeys.forEach(item => {
+//     addEventListener('click', function (event){
+//         const x = event.target.innerText
+//         console.log(x)
+//     })
+// })
+
+
+
+
+
+ 
 //Result Button Functionallity
 //still doesn't work
-const calcBtn = document.querySelector('#equal')
-calcBtn.addEventListener('click', function calculated(){
-    
+
     
     // let operSign = document.querySelectorAll('.oper-key')
     // let currentNumber = show.innerText.length > operSign;
@@ -144,66 +165,108 @@ calcBtn.addEventListener('click', function calculated(){
     
     
     
-    let show = document.querySelector('.calculater-monitor').innerText
+    // let show = document.querySelector('.calculater-monitor').innerText
     
-    let previousNum = parseInt(show);
-    let currentNum = parseInt(show);
-    let current = currentNum;
-    let previous = previousNum;
+    // let previousNum = null;
+    // let currentNum = parseFloat(show);
+    // let current = currentNum;
+    // let previous = previousNum;
+    // let result;
+    // if (show.includes('+' || '-' || '*' || '/')){
 
+    //     previous = current
+    // }
+
+    // console.log("previuos", previous)
+    // console.log("current", current)
+
+    // if (show.includes('+')){
+    // console.log('Addition')
+    // result = current + previous;
+    // } else if (show.includes('-')){
+        //     console.log('Subtraction')
+        //     result = current - previous;
+        // } else if (show.includes('*')){
+            //     console.log('Multiplication')
+            //     result = current * previous;
+            // } else if (show.includes('/')){
+                //     console.log('Division')
+                //     result = current / previous;
+                // }
+                
+                // document.querySelector('.calculater-monitor').innerText = result;
+                
+       
+                
+    // const numKeys = document.querySelectorAll('.key-numbers')
+    // let eachNumKey = numKeys.forEach(function () {
+    
+    // });
+    
+    
+    // const operKeys = document.querySelectorAll('[data-opr]')
+    // let eachOperKey = operKeys.forEach(function () {
+    
+    // }); 
+    
+    
+
+
+
+
+
+
+const calcBtn = document.querySelector('#equal')
+calcBtn.addEventListener('click', function calculated(){
+
+    let previous = document.querySelector('.previous-number').innerText
+    let current = document.querySelector('.current-number').innerText
     let result;
+    
+    
+    if (document.querySelector('.Addition').clicked !== true){
+        console.log('Addition')
+        previous = current
+        current = ''
+        console.log(previous)
+        console.log(current)
+        result = current + previous;
+        
 
-    if (show.includes('+')){
-    console.log('Addition')
-    result = current + previous;
-    } else if (show.includes('-')){
+   
+    
+    } else {
+        previous = document.querySelector('.previous-number').innerText
+        current = document.querySelector('.current-number').innerText
+    }
+    
+    if (document.querySelector('.Subtraction').clicked){
         console.log('Subtraction')
         result = current - previous;
-    } else if (show.includes('*')){
+    } else if (document.querySelector('.Multiplication').clicked){
         console.log('Multiplication')
         result = current * previous;
-    } else if (show.includes('/')){
+    } else if (document.querySelector('.Division').clicked){
         console.log('Division')
         result = current / previous;
     }
     
-    document.querySelector('.calculater-monitor').innerText = result;
-
-
-
-
-
-    // if (show !== '+','*','/'){
-    //     console.log('Subtraction')
-    //     return result = current - previous;
-    // }
-        
-
-
-    // if (show !== '-','+','/'){
-    //     console.log('Multiplication')
-    //     return result = current * previous;
-    // }
-
-
-
-    // if (show !== '-','*','+'){
-    //     console.log('Division')
-    //     result = current / previous;
-    // }
-
-
-
-
-
-    
-    
-
-
-    
-
-
+    document.querySelector('.current-number').innerText = result;
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -221,6 +284,42 @@ calcBtn.addEventListener('click', function calculated(){
 //     }
     
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
