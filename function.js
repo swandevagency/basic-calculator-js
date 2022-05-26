@@ -1,15 +1,20 @@
-//Difining buttons
+// * importing buttons
 const numberBut = document.querySelectorAll('[data-number]')
-const DecimalNums = document.querySelector(".Decimal")
+const DecimalNum = document.querySelector(".Decimal")
 const dataOperation = document.querySelectorAll('[data-operation]')
 const delBut = document.querySelector(".delete")
 const equalButton = document.querySelector('#equal')
-const previousNumber = document.querySelector('[previous-number]')
-const currentNumber = document.querySelector('[current-number]')
+
+// * importing text fields
+let previousNumber = document.querySelector('[previous-number]')
+let currentNumber = document.querySelector('[current-number]')
+
+// * defining variables
+let computed;
+let operation;
 
 
-
-//Number Functionallity for apper when click on it
+//Number functionality for appear when click on it
 numberBut.forEach(button => {
     button.addEventListener('click', (event) => {
         const x = event.target.innerText;
@@ -20,82 +25,80 @@ numberBut.forEach(button => {
     })
 })
 
-
-
-//Operation Button function
-dataOperation.forEach(butOper => {
-    butOper.addEventListener('click', (event) => {
-    const y = event.target.innerText;
-    if (currentNumber.innerText == '') {
-        
-    }
-    return currentNumber.innerText += y;
-    })
-})
-
-
-
-//Operation function
-function updateDisplay(butOper){
-    if (dataOperation.clicked !== true) {
-        console.log('Arsam');
-        previousNumber = currentNumber
-        currentNumber = ''
-        operation = computed
-    } else {
-        
-    }
-
+document.getElementsByClassName('oper-key').onclick = function() {
+    alert("button was clicked");
 }
 
 
 
-// if statment for whenever the oparator button clicked
-function computation(){
-    updateDisplay()
-    let previous = parseInt(previousNumber)
-    let current = parseInt(currentNumber)
-    let computed;
-    console.log('cur', current)
-    console.log('pre', previous)
+//Operation Button function
+dataOperation.forEach(butOper => {
+    butOper.addEventListener('click', function updateDisplay() {
+
+        if (dataOperation.clicked !== true) {
+            console.log('Arsam');
+            previousNumber.innerText = currentNumber.innerText
+            currentNumber.innerText = null
+            
+        }
+        computation()
+    })
+})
+
+
+//  if statment for whenever the oparator button clicked
+function computation(computed){
+    
+    console.log('Arsam2');
+    let previous = parseFloat(previousNumber.innerText)
+    console.log(previousNumber)
+    let current = parseFloat(currentNumber.innerText)
+    console.log(currentNumber)
+
+    // console.log('cur', current)
+    // console.log('pre', previous)
+    
+
+    
 
     switch(operation) {
         case '+':
-            computed = current + previous;
+            computed = current + previousNumber;
             break;
         case '-':
-            computed = current - previous;
+            computed = current - previousNumber;
             break;
         case '*':
-            computed = current * previous;
+            computed = current * previousNumber;
             break;
         case '/':
-            computed = current / previous;
+            computed = current / previousNumber;
           break;
         default:
       }
 };
 
-//Equal Button Functionallity
+//Equal Button Functionality
 equalButton.addEventListener('click', function calculated(){
-    computation()
-    document.querySelector('.current-number').innerText ;
+    computation(2)
+    return document.querySelector('.current-number').innerText ;
 });
+    
 
 
-
-//Clear Button functionallity
+//AllClear Button functionallity
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", function(event) {
     let clearMonitor = document.querySelector('.current-number') 
     document.querySelector('.current-number').innerHTML = '';  
+    document.querySelector('.previous-number').innerHTML = '';  
 });
 
 
 
 //Decimal Button functionallity
-DecimalNums.addEventListener('click', function(decnum){
-    document.querySelector('.current-').innerText += '.';
+DecimalNum.addEventListener('click', function(decnum){
+    document.querySelector('.current-number').innerText += '.';
 
     let show = document.querySelector('.current-number')
     if(show != ''){
