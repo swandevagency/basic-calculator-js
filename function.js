@@ -1,7 +1,7 @@
 // * importing buttons
 const numberBut = document.querySelectorAll('[data-number]')
 const DecimalNum = document.querySelector(".Decimal")
-const dataOperation = document.querySelectorAll('[data-operation]')
+const dataOperation = document.querySelectorAll('.oper-key')
 const delBut = document.querySelector(".delete")
 const equalButton = document.querySelector('#equal')
 
@@ -9,113 +9,23 @@ const equalButton = document.querySelector('#equal')
 let previousNumber = document.querySelector('[previous-number]')
 let currentNumber = document.querySelector('[current-number]')
 
-// * defining variables
-
-
-
-
-// * Number functionality for appear when click on it
-numberBut.forEach(button => {
-    button.addEventListener('click', (event) => {
-        const x = event.target.innerText;
-        if (currentNumber.innerText == '') {
-            
-        }
-        return currentNumber.innerText += x;
-    })
-})
-
-
-
-
-// * Operation Button function
-dataOperation.forEach(butOperation => {
-    butOperation.addEventListener('click', function updateDisplay() {
-        const x = event.target.innerText;
-        if (currentNumber.innerText == '') {
-            
-        }
-        currentNumber.innerText += x;
-
-        if (dataOperation.clicked !== true) {
-            previousNumber.innerText = currentNumber.innerText
-            currentNumber.innerText = null
-
-            if (currentOperand === '') return
-            if (previousOperand !== ''){calculated(result)}
-
-        }
-         
-        
-        
-    })
-})
-
-
- // * if statment for whenever the oparator button clicked
-// function computation(result){
-
-    
-
-// };
-    
-
-
-// * Equal Button Functionality
-equalButton.addEventListener('click', function calculated(result){
-    let Operation = document.querySelector('[data-ops]')
-    
-
-
-    let previous = parseFloat(previousNumber.innerText) 
-    let current = parseFloat(currentNumber.innerText) 
-
-    if (previousNumber.innerText.includes('+')){
-        console.log('plus')
-        result = previous + current;
-    } else if(previousNumber.innerText.includes('-')) {
-        result = previous - current;
-        console.log('minus')
-    } else if (previousNumber.innerText.includes('*')) {
-        result = previous * current;
-        console.log('times')
-    } else if (previousNumber.innerText.includes('/')) {
-        result = previous / current;
-        console.log('divided by')
-    }
-    
-    console.log(result);
-    document.querySelector('.current-number').innerText = result;
-});
-    
-
-// todo : handle chain transactions
 // * AllClear Button functionallity
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", function(event) {
     let clearMonitor = document.querySelector('.current-number') 
     document.querySelector('.current-number').innerHTML = '';  
-    document.querySelector('.previous-number').innerHTML = '';  
+    document.querySelector('.previous-number').innerHTML = '';
+    console.clear() 
 });
 
 
-
-// * Decimal Button functionallity
+// * Decimal Button functionality
 DecimalNum.addEventListener('click', function(){
     document.querySelector('.current-number').innerText += '.';
-
-    let show = document.querySelector('.current-number')
-    if(show != ''){
-        document.querySelector('.Decimal').disabled = true;
-    } else {
-        document.querySelector('.Decimal').disabled = false;
-    } 
-
 })
 
 
-
-//Del Button Functionallity
+// * Del Button Functionality
 delBut.addEventListener('click', function del() {
     let show = document.querySelector('.current-number')
     let content = show.innerText;
@@ -127,35 +37,131 @@ delBut.addEventListener('click', function del() {
 });
 
 
-
-
-//Dont click buttons Functionallity
+// * Dont click buttons Functionality
 const error = document.querySelector(".dontClick")
 error.addEventListener('click', function(){
     document.querySelector('.calculator').style.display = "none";
     document.querySelector('.container-secion-wrapper').innerHTML = "<h1> I Said Don't Click </h1>"
 })   
 
+
+// * Refresh buttons Functionality
 function refreshPage(){
-    window.location.reload();
+    if (confirm('Are you sure you want to reload this page?')){
+        window.location.reload();
+    }else{
+        //do nothing
+    }
 } 
 
 
+// * Number functionality for appear when click on it
+numberBut.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const x = event.target.innerText;
+        console.log(x)
+        if (currentNumber.innerText == '') {
+
+        }
+        return currentNumber.innerText += x;
+    })
+})
+
+// * Operation Button function
+let operation;
+dataOperation.forEach(butOperation => {
+    butOperation.addEventListener('click', function operator(event) {
+        operation = event.target.innerText;
+        currentNumber.innerText += operation
+        console.log(operation)
+        if (dataOperation.clicked !== true) {
+            previousNumber.innerText = currentNumber.innerText
+            currentNumber.innerText = null
+        }
+        
+    })
+});
+
+
+// * Equal Button Functionality
+equalButton.addEventListener('click', function calculated(){
+    let previous = parseFloat(previousNumber.innerText) 
+        let current = parseFloat(currentNumber.innerText)
+        let result;
+        console.log('previous', previous)
+        console.log('current', current)
+        switch(operation) {
+            case '+':
+                result = previous + current;
+                console.log(`${previous} + ${current} = ${result}`);
+            break;
+      
+            case '-':
+                result = previous - current;
+                console.log(`${previous} - ${current} = ${result}`);
+            break;
+      
+            case '*':
+                result = previous * current;
+                console.log(`${previous} * ${current} = ${result}`);
+            break;
+      
+            case '/':
+                result = previous / current;
+                console.log(`${previous} / ${current} = ${result}`);
+            break;
+      
+            default:
+                console.log('Invalid operator');
+            break;
+        }
+    
+    
+    
+    
+    document.querySelector('.current-number').innerText = result;
+});
+    
+
+
+// !
+// function operation(result) {
+//     let previous = parseFloat(previousNumber.innerText) 
+//     let current = parseFloat(currentNumber.innerText) 
+
+
+    
+//     if (previousNumber.innerText.includes('+')){
+//         console.log('plus')
+//         result = previous + current;
+//     } else if(previousNumber.innerText.includes('-')) {
+//         result = previous - current;
+//         console.log('minus')
+//     } else if (previousNumber.innerText.includes('*')) {
+//         result = previous * current;
+//         console.log('times')
+//     } else if (previousNumber.innerText.includes('/')) {
+//         result = previous / current;
+//         console.log('divided by')
+//     }
+
+// }
 
 
 
+// const plus = document.querySelector('.Addition')
+// const minus = document.querySelector('.Subtraction')
+// const times = document.querySelector('.Multiplication')
+// const divided = document.querySelector('.Division')
 
 
 
-
-
-
-
-
-
-
-
-
+// const zeroButton = document.querySelector('.key-number-0')
+// if(currentNumber.innerText == ''){
+//     zeroButton.addEventListener('click', function(){
+//         zeroButton.disabled = true;
+//     })
+// }
 
 
 
