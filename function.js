@@ -9,6 +9,12 @@ const equalButton = document.querySelector('#equal')
 let previousNumber = document.querySelector('[previous-number]')
 let currentNumber = document.querySelector('[current-number]')
 
+// * defining variables
+let previous;
+let current ;
+let operation;
+let result;
+
 // * AllClear Button functionallity
 const clearBtn = document.querySelector(".clear");
 clearBtn.addEventListener("click", function(event) {
@@ -54,12 +60,11 @@ function refreshPage(){
     }
 } 
 
-
 // * Number functionality for appear when click on it
 numberBut.forEach(button => {
     button.addEventListener('click', (event) => {
         const x = event.target.innerText;
-        console.log(x)
+        console.log('sdafsdafasdfsdaf',x)
         if (currentNumber.innerText == '') {
 
         }
@@ -67,61 +72,99 @@ numberBut.forEach(button => {
     })
 })
 
+
 // * Operation Button function
-let operation;
 dataOperation.forEach(butOperation => {
-    butOperation.addEventListener('click', function operator(event) {
-        operation = event.target.innerText;
-        currentNumber.innerText += operation
-        console.log(operation)
-        if (dataOperation.clicked !== true) {
-            previousNumber.innerText = currentNumber.innerText
-            currentNumber.innerText = null
+    butOperation.addEventListener('click', operator)
+    /* butOperation.addEventListener('click', ()=>{
+        if(p/* revious !== null && current == null){
+            console.log('Kar Mikone')
+            calculated()
         }
-        
-    })
+    }) */
 });
+ 
+    
+function operator(event) {
+    if(currentNumber.innerText && previousNumber.innerText) {
+        calculated()
+    }
+    operation = event.target.innerText;
+    currentNumber.innerText += operation
+    console.log('operation',operation)
+    
+    
+    previousNumber.innerText = currentNumber.innerText
+    currentNumber.innerText = null
+
+    // if (current !== null && current !== undefined && previous !== null && previous !== undefined){
+    //     calculated();
+    // }
+}
 
 
-// * Equal Button Functionality
-equalButton.addEventListener('click', function calculated(){
-    let previous = parseFloat(previousNumber.innerText) 
-        let current = parseFloat(currentNumber.innerText)
-        let result;
+function calculated(){
+        previous = parseFloat(previousNumber.innerText) 
+        current = parseFloat(currentNumber.innerText)
+        
         console.log('previous', previous)
         console.log('current', current)
+
+
         switch(operation) {
+
             case '+':
                 result = previous + current;
                 console.log(`${previous} + ${current} = ${result}`);
-            break;
+                break;
       
             case '-':
                 result = previous - current;
                 console.log(`${previous} - ${current} = ${result}`);
-            break;
+                break;
       
             case '*':
                 result = previous * current;
                 console.log(`${previous} * ${current} = ${result}`);
-            break;
+                break;
       
             case '/':
+                if(current == 0){
+                    return currentNumber.innerText = "Error!";
+                }
                 result = previous / current;
                 console.log(`${previous} / ${current} = ${result}`);
-            break;
-      
+                break;
+    
             default:
-                console.log('Invalid operator');
-            break;
+                break
         }
+        document.querySelector('.current-number').innerText = result;
+        document.querySelector('.previous-number').innerText = '';
+        
     
-    
-    
-    
-    document.querySelector('.current-number').innerText = result;
-});
-    
+};
+
+
+// * Equal Button Functionality
+equalButton.addEventListener('click', calculated)
+  
+
+
+// function someFunction (num1, num2){
+//     return num1 + num2
+// }
+
+// function doSomething(num, cb){
+//     // defining the click event
+
+//     // doing something
+//     const result = 1 + cb(num, 2);
+//     return result + num
+// }
+
+// doSomething(2, someFunction)
+
 
 
 // !
